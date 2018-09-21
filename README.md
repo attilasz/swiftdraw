@@ -6,6 +6,8 @@ by [Attila Szabo](http://attilaszabo.org)
 
 Command line drawing scripts written in Swift for macOS
 
+Mainly for creating icons/artworks for apps 
+
 ### Example
 ```console
 # ./open.swift
