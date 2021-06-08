@@ -3,7 +3,7 @@
 import AppKit
 
 let width: CGFloat = 128
-let height: CGFLoat = 128
+let height: CGFloat = 128
 
 let path = CommandLine.arguments[0] as NSString
 let output = (path.deletingPathExtension as NSString).appendingPathExtension("pdf")!

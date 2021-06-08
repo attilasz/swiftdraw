@@ -21,19 +21,28 @@ context.scaleBy(x: 1, y: -1)
 context.translateBy(x: 0, y: -height)
 
 // START DRAWING
-var path = CGMutablePath()
-path.move(to: CGPoint(x: box.midX, y: height - 20))
-path.addCurve(to: CGPoint(x: box.midX, y: 30), control1: CGPoint(x: -20, y: 60), control2: CGPoint(x: 20, y: 0))
-path.move(to: CGPoint(x: box.midX, y: height - 20))
-path.addCurve(to: CGPoint(x: box.midX, y: 30), control1: CGPoint(x: 147, y: 60), control2: CGPoint(x: 107, y: 0))
-var transform = CGAffineTransform(scaleX: -1, y: 1)
-context.addPath(path)
+let radius = 50.0
+let angle: Double = 2 * .pi / 10
+let path = CGMutablePath()
 
-if CommandLine.arguments.count > 1 {
-	context.fillPath()
-} else {
-	context.strokePath()
+for i in 0...10 {
+	let _radius = i % 2 == 0 ? radius : radius * 0.36
+	let _angle = Double(i) * angle - .pi / 2
+
+	let x = CGFloat(_radius * cos(_angle) + radius)
+	let y = CGFloat(_radius * sin(_angle) + radius)
+
+	if i == 0 {
+		path.move(to: CGPoint(x: x, y: y))
+		continue
+	}
+	context.addArc(center: CGPoint(x: x, y: y), radius: 10, startAngle: 0.2, endAngle: .pi - 0.2, clockwise: false)
+//	path.addLine(to: CGPoint(x: x, y: y))
 }
+
+context.translateBy(x: 14, y: 18)
+context.addPath(path)
+context.strokePath()
 // END
 
 context.endPDFPage()

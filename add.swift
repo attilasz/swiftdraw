@@ -22,7 +22,7 @@ context.translateBy(x: 0, y: -height)
 
 // START DRAWING
 context.translateBy(x: box.midX, y: box.midY)
-let lineCount = 3
+let lineCount = 2
 for _ in 1...lineCount {
 	context.move(to: CGPoint(x: -56, y: 0))
 	context.addLine(to: CGPoint(x: 56, y: 0))
